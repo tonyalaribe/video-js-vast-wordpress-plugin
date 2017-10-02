@@ -8,7 +8,7 @@ if (!defined('ABSPATH')) exit;
  * Handles adding scripts functionality to the admin pages
  * as well as the front pages.
  *
- * @package Hola Video Player
+ * @package True Pundit Video Player
  * @since 1.0.0
  */
 
@@ -23,7 +23,7 @@ class Hvp_Scripts {
     /**
      * Enqueue Scripts on Admin Side
      *
-     * @package Hola Video Player
+     * @package True Pundit Video Player
      * @since 1.0.0
      */
     public function hvp_admin_scripts() {
@@ -37,8 +37,8 @@ class Hvp_Scripts {
             wp_register_style('hvp_admin_style',  HVP_INC_URL . '/css/hvp-admin-style.css',HVP_VERSION);
             wp_enqueue_style('hvp_admin_style');
 
-            wp_register_script('hvp_ga_script', HVP_INC_URL . '/js/ga.js', HVP_VERSION);
-            wp_enqueue_script('hvp_ga_script');
+            //wp_register_script('hvp_ga_script', HVP_INC_URL . '/js/ga.js', HVP_VERSION);
+            //wp_enqueue_script('hvp_ga_script');
             
             if (is_admin ())
                 wp_enqueue_media();
@@ -48,35 +48,40 @@ class Hvp_Scripts {
     /**
      * Enqueue Scripts on front Side
      *
-     * @package Hola Video Player
+     * @package True Pundit Video Player
      * @since 1.0.0
      */
     public function hvp_public_scripts(){
         global $post;        
 
         // Simple video js
-        $customer = get_option('hvp-cdn-customerid');
-        if ($customer) {
-            wp_register_script('hvp_video_script', "//player2.h-cdn.com/hola_player.js?customer=$customer", array(), null);
-        }
+        // $customer = get_option('hvp-cdn-customerid');
+        // if ($customer) {
+            // wp_register_script('hvp_video_script', HVP_INC_URL . "/js/hola/hola_player.dev.js", array(), null);
+        // }
 
-        // Youtube videojs support
-        wp_register_script('hvp_youtube_video_script', HVP_INC_URL . '/js/Youtube.js', array(), HVP_VERSION);
+        // // Youtube videojs support
+        // wp_register_script('hvp_youtube_video_script', HVP_INC_URL . '/js/Youtube.js', array(), HVP_VERSION);
 
-        // Vimeo videojs support
-        wp_register_script('hvp_vimeo_video_script', HVP_INC_URL . '/js/Vimeo.js', array(), HVP_VERSION);
+        // // Vimeo videojs support
+        // wp_register_script('hvp_vimeo_video_script', HVP_INC_URL . '/js/Vimeo.js', array(), HVP_VERSION);
 
-        // IMA ADS SDK loader
-        wp_register_script('hvp_ima_ads_sdk_script', '//imasdk.googleapis.com/js/sdkloader/ima3.js', array(), HVP_VERSION);
+        // // IMA ADS SDK loader
+        // wp_register_script('hvp_ima_ads_sdk_script', '//imasdk.googleapis.com/js/sdkloader/ima3.js', array(), HVP_VERSION);
+
+        wp_register_script('hvp_video_script', "//vjs.zencdn.net/5.19/video.min.js", array(), null);
    }
 
     /**
      * Enqueue styles on front Side
      *
-     * @package Hola Video Player
+     * @package True Pundit Video Player
      * @since 1.0.0
      */
     public function hvp_public_styles() {
+        wp_register_script('hvp_public_styles', "//vjs.zencdn.net/5.19/video-js.min.css", HVP_VERSION);
+        wp_register_style('hvp_public_styles',  HVP_INC_URL . '/css/videojs-flat-skin.css',HVP_VERSION);
+        wp_enqueue_style('hvp_public_styles');
     }
     
     /**
@@ -84,7 +89,7 @@ class Hvp_Scripts {
      *
      * Adding hooks for the styles and scripts.
      *
-     * @package Hola Video Player
+     * @package True Pundit Video Player
      * @since 1.0.0
      */
     function add_hooks(){

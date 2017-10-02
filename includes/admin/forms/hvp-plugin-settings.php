@@ -7,23 +7,23 @@ if (!defined('ABSPATH')) exit;
  *
  * Handle HolaCDN integration settings
  *
- * @package Hola Free Video Player
+ * @package True Pundit Video Player
  * @since 1.3
  */
 
-$cdn_customerid = get_option('hvp-cdn-customerid');
-wp_add_inline_script('hvp_ga_script', "ga('hvp.set', 'page', 'wp-plugin-settings'); ga('hvp.send', 'pageview');");
+//$cdn_customerid = get_option('hvp-cdn-customerid');
+//wp_add_inline_script('hvp_ga_script', "ga('hvp.set', 'page', 'wp-plugin-settings'); ga('hvp.send', 'pageview');");
 ?>
 <!-- . begining of wrap -->
 <div class="wrap">
   <?php
     echo screen_icon('options-general'); 
-    echo "<h1>" . __('Hola Free Video Player', HVP_TEXTDOMAIN) . "</h1>";
+    echo "<h1>" . __('True Pundit Video Player', HVP_TEXTDOMAIN) . "</h1>";
   ?> 
 
-  <h2>HolaCDN account required. Sign up and get free video analytics.</h2>
+  <h2>True Pundit Video Settings .</h2>
   <ul class="hvp-cdn-signup-steps">
-    <li>
+<!--     <li>
       <?php if ($cdn_customerid) { ?>
           <p>HolaCDN analytics account activated!!</p>
       <?php } else { ?>
@@ -31,8 +31,8 @@ wp_add_inline_script('hvp_ga_script', "ga('hvp.set', 'page', 'wp-plugin-settings
         onclick="window.ga('hvp.send', 'event', 'wp-plugin', 'click', 'cdn-signup')"
         class="button button-primary">Sign up</a> for HolaCDN.
       <?php } ?>
-    </li>
-    <li>
+    </li> -->
+<!--     <li>
       <form method="post" name="hvp-cdn-customerid" action="options.php">
         <?php settings_fields('hvp-cdn-settings'); ?>
         <?php do_settings_sections('hvp-cdn-settings'); ?>
@@ -45,15 +45,31 @@ wp_add_inline_script('hvp_ga_script', "ga('hvp.set', 'page', 'wp-plugin-settings
           value="<?php echo esc_attr(get_option('hvp-cdn-customerid')); ?>" />
         <?php submit_button(); ?>
       </form>
-    </li>
-    <li>
-      <p>View video stats in your personal <a id="hvp-dashboard-link"
-        onclick="window.ga('hvp.send', 'event', 'wp-plugin', 'click', 'dashboard-link')"
-        href="//holacdn.com/cp/stats/dashboard" target="_blank">Dashboard</a>.
-      </p>
-      <p><a href="mailto:sales@holacdn.com?subject=Help with HolaCDN on Wordpress&cc=or@hola.org">
-        Contact us for help.</a>
-      </p>
+    </li> -->
+
+      <form method="post" name="hvp-cdn-customerid" action="options.php">
+        <?php settings_fields('hvp-cdn-settings'); ?>
+        <?php do_settings_sections('hvp-cdn-settings'); ?>
+        <li>
+          <p>Insert your Default VAST URL</p>
+          <input type="text" class="hvp-input"
+            id="tp-default-vast-urlmerid" name="tp-default-vast-url"
+            value="<?php echo esc_attr(get_option('tp-default-vast-url')); ?>" />
+        </li>
+        <li>
+          <p>Insert your AWS access key id</p>
+          <input type="text" class="hvp-input"
+            id="tp-aws-access-key-id" name="tp-aws-access-key-id"
+            value="<?php echo esc_attr(get_option('tp-aws-access-key-id')); ?>" />
+        </li>
+        <li>
+          <p>Insert your AWS Secret key</p>
+          <input type="text" class="hvp-input"
+            id="tp-aws-secret-key" name="tp-aws-secret-key"
+            value="<?php echo esc_attr(get_option('tp-aws-secret-key')); ?>" />
+        </li>
+        <?php submit_button(); ?>
+      </form>
     </li>
   </ol>
 </div><!-- .end of wrap -->

@@ -1,4 +1,4 @@
-=== Hola Free Video Player ===
+=== True Pundit Video Player ===
 Contributors: holanetworks
 Donate link: https://github.com/hola/video.js
 Tags: video, player, video player, free, videojs
@@ -8,7 +8,7 @@ Stable tag: 4.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-The Hola video player is VideoJS on steroids - a commercial grade, flexible
+The True Pundit Video player is VideoJS on steroids - a commercial grade, flexible
 video player, which provides your users the best viewing experience.
 
 == Description ==

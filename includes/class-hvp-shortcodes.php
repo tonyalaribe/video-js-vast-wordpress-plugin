@@ -8,7 +8,7 @@ if (!defined('ABSPATH')) exit;
  *
  * Handles shortcode of the plugin
  *
- * @package Hola Video Player
+ * @package True Pundit Video Player
  * @since 1.0.0
  */
 
@@ -24,7 +24,7 @@ class Hvp_Shortcode {
     /**
      * Display simple video
      *
-     * @package Hola Video Player
+     * @package True Pundit Video Player
      * @since 1.0.0
     */
     public function hvp_simple_video($atts, $content) {
@@ -49,11 +49,11 @@ class Hvp_Shortcode {
     /**
      * Adding hooks for the register all shotcodes.
      *
-     * @package Hola Video Player
+     * @package True Pundit Video Player
      * @since 1.0.0
      */
     function add_hooks(){
         // Shortcode for showing video
-        add_shortcode('hvp-video', array($this, 'hvp_simple_video'));
+        add_shortcode('tp-video', array($this, 'hvp_simple_video'));
     }
 }

@@ -7,7 +7,7 @@ if (!defined('ABSPATH')) exit;
  *
  * Manage Admin Panel Class
  *
- * @package Hola Video Player
+ * @package True Pundit Video Player
  * @since 1.0.0
  */
 
@@ -36,7 +36,7 @@ class Hvp_Admin {
     /**
      * Add shortcode button to post or page editor
      *
-     * @package Hola Video Player
+     * @package True Pundit Video Player
      * @since 1.0.0
      */
     function hvp_add_shortcode_button() {
@@ -44,12 +44,14 @@ class Hvp_Admin {
             add_filter('mce_external_plugins', array($this, 'hvp_shortcode_button'));
             add_filter('mce_buttons', array($this, 'hvp_shortcode_display_button'));
         }
-        register_setting('hvp_plugin_options', 'hvp_options', array($this, 'hvp_validate_options'));
-        if (is_admin() && get_option('hvp_firstrun')=='hvp-plugin-activated') {
-            include_once(HVP_ADMIN_DIR . '/forms/hvp-firstrun-popup.php');
-            delete_option('hvp_firstrun');
-        }
-    }
+        // register_setting('hvp_plugin_options', 'hvp_options', array($this, 'hvp_validate_options'));
+        // if (is_admin() && get_option('hvp_firstrun')=='hvp-plugin-activated') {
+        //     include_once(HVP_ADMIN_DIR . '/forms/hvp-firstrun-popup.php');
+        //     delete_option('hvp_firstrun');
+        // }
+
+
+  }
 
     function hvp_validate_options($input) {
         $input['title']    =  $this->model->hvp_escape_slashes_deep($input['hvp_activate_analytics']);
@@ -60,7 +62,7 @@ class Hvp_Admin {
      *
      * Includes the pop up on the WordPress editor
      *
-     * @package Hola Video Player
+     * @package True Pundit Video Player
      * @since 1.0.0
      */
     function hvp_shortcode_popup() {
@@ -71,12 +73,16 @@ class Hvp_Admin {
 
     public function hvp_add_menu_page(){
         if(current_user_can('manage_options') || current_user_can('edit_posts')) {
-            $hook = add_menu_page(__('Hola Free Video Player', HVP_TEXTDOMAIN),
-                __('Hola Free Video Player', HVP_TEXTDOMAIN), 'manage_options',
+            $hook = add_menu_page(__('True Pundit Video Player', HVP_TEXTDOMAIN),
+                __('True Pundit Video Player', HVP_TEXTDOMAIN), 'manage_options',
                 'hvp_player_setting_page', 
                 array($this, 'hvp_player_setting_page'));
         }
-        register_setting('hvp-cdn-settings', 'hvp-cdn-customerid');
+        // register_setting('hvp-cdn-settings', 'hvp-cdn-customerid');
+        register_setting('hvp-cdn-settings', 'tp-default-vast-url');
+        register_setting('hvp-cdn-settings', 'tp-aws-access-key-id');  
+        register_setting('hvp-cdn-settings', 'tp-aws-secret-key');  
+
     }
 
     /**
@@ -84,7 +90,7 @@ class Hvp_Admin {
      *
      * Including File for plugin settings
      *
-     * @package Hola Video Player
+     * @package True Pundit Video Player
      * @since 1.3
      */
     public function hvp_player_setting_page() {
@@ -94,13 +100,13 @@ class Hvp_Admin {
     /**
      * Adding Hooks
      *
-     * @package Hola Video Player
+     * @package True Pundit Video Player
      * @since 1.0.0
      */
     function add_hooks() {
         // add filters for add add button in post / page container
         add_action('admin_init', array($this, 'hvp_add_shortcode_button'));
-        // add admin menu for Hola video player setting page
+        // add admin menu for True Pundit Video player setting page
         add_action('admin_menu', array($this, 'hvp_add_menu_page'));
         // mark up for popup
         add_action('admin_footer-post.php', array($this,'hvp_shortcode_popup'));

@@ -7,13 +7,13 @@ jQuery(document).ready(function($) {
         tinymce.create('tinymce.plugins.hvp_video', {
             init : function(ed, url) {
                 ed.addButton('hvp_video', {
-                    title : 'Hola Video Player',
+                    title : 'True Pundit Video Player',
                     image : url+'/../images/hola_player.svg',
                     onclick : function() {
                         $('.hvp-popup-overlay').fadeIn();
-                        window.ga('hvp.set', 'page', 'wp-shortcode-popup', 'click');
-                        window.ga('hvp.send', 'pageview');
-                        window.ga('hvp.send', 'event', 'wp-plugin', 'click', 'open-shortcode-btn');
+                        // window.ga('hvp.set', 'page', 'wp-shortcode-popup', 'click');
+                        // window.ga('hvp.send', 'pageview');
+                        // window.ga('hvp.send', 'event', 'wp-plugin', 'click', 'open-shortcode-btn');
 
                         var popupcontent = $('.hvp-popup-content');
                         popupcontent.fadeIn();
@@ -36,8 +36,8 @@ jQuery(document).ready(function($) {
     });
 
     $(document).on("click", "#hvp-insert-shortcode", function() {
-        window.ga('hvp.send', 'event', 'wp-plugin', 'click', 'insert-shortcode-btn');
-        var hvpshortcode = 'hvp-video';
+        // window.ga('hvp.send', 'event', 'wp-plugin', 'click', 'insert-shortcode-btn');
+        var hvpshortcode = 'tp-video';
         var hvpshortcodestr = '';
 
         hvpSwitchDefaultEditorVisual();

@@ -6,9 +6,9 @@ if (!defined('ABSPATH')) exit;
 add_action('widgets_init', 'hvp_widget');
 
 /**
- * Register the hola video Widget
+ * Register the True Pundit Video Widget
  *
- * @package Hola Video Player
+ * @package True Pundit Video Player
  * @since 1.0.0
  */
 function hvp_widget() {
@@ -20,7 +20,7 @@ function hvp_widget() {
  *
  * Handles generic functionailties
  *
- * @package Hola Video Player
+ * @package True Pundit Video Player
  * @since 1.0.0
  */
 
@@ -31,8 +31,8 @@ class Hvp_Widget extends WP_Widget {
     
     public function __construct() {
         global $hvp_model;
-        $widget_ops = array('classname' => 'widget_text', 'description' => __('Display video with Hola Free Video Player', HVP_TEXTDOMAIN));        
-        WP_Widget::__construct('hvp-widget', __('Hola Free Video Player', HVP_TEXTDOMAIN), $widget_ops);
+        $widget_ops = array('classname' => 'widget_text', 'description' => __('Display video with True Pundit Video Player', HVP_TEXTDOMAIN));        
+        WP_Widget::__construct('hvp-widget', __('True Pundit Video Player', HVP_TEXTDOMAIN), $widget_ops);
         $this->model = $hvp_model;
     }
 
@@ -162,14 +162,14 @@ class Hvp_Widget extends WP_Widget {
             value="<?php echo esc_attr($adtagurl); ?>"
             style="<?php echo $instance['is_video_ads'] ? '' : 'display: none;' ?>">
         <p>
-        <?php if ($cdn_customerid) { ?>
+<!--         <?php if ($cdn_customerid) { ?>
             <p>HolaCDN analytics activated for account <?php _e($cdn_customerid); ?>!</p>
         <?php } else { ?>
             <a target="_blank" onclick="window.ga('hvp.send', 'event', 'wp-plugin', 'click', 'widget-analytics-link')"
               href="<?php echo admin_url('admin.php?page=hvp_player_setting_page'); ?>">
                 <?php _e('HolaCDN account required. Sign up and get free video analytics.'); ?>
             </a>
-        <?php } ?>
+        <?php } ?> -->
         </p>
 
     <?php

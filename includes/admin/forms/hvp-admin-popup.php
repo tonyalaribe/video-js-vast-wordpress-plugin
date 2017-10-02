@@ -9,20 +9,20 @@ if (!defined('ABSPATH')) exit;
  * This is the code for the pop up editor, which shows up when an user clicks
  * on the HVP video icon within the WordPress editor.
  *
- * @package Hola Video Player
+ * @package True Pundit Video Player
  * @since 1.0.0
  *
  **/
 
 // Get all post types
-$template_arr = array('vjs-default-skin'=> 'Default');
-$cdn_customerid = get_option('hvp-cdn-customerid');
+$template_arr = array('vjs-flat-skin'=> 'Default');
+// $cdn_customerid = get_option('hvp-cdn-customerid');
 ?>
 
 <div class="hvp-popup-content" id="hvp-popup-shortcode">
     
     <div class="hvp-header">
-        <div class="hvp-header-title"><?php _e('Add Hola Video Player Shortcode', HVP_TEXTDOMAIN);?></div>
+        <div class="hvp-header-title"><?php _e('Add True Pundit Video Player Shortcode', HVP_TEXTDOMAIN);?></div>
         <div class="hvp-popup-close"><a href="javascript:void(0);" class="hvp-close-button"><img src="<?php echo HVP_INC_URL;?>/images/close.svg" alt="<?php _e('Close', HVP_TEXTDOMAIN);?>" /></a></div>
     </div>
     
@@ -96,11 +96,11 @@ $cdn_customerid = get_option('hvp-cdn-customerid');
                         <input type="checkbox" id="hvp-video-ads" class="hvp-video-ads" name="hvp-video-ads">
                         <label for="hvp-video-ads"><?php _e('Display ads in video:'); ?></label>
                     </div>
-                    <input type="text" id="hvp-ads-url" class="hvp-ads-container" name="hvp-ads-url"
+                    <input type="text" id="hvp-ads-url" class="hvp-ads-container" name="hvp-ads-url" value="<?php echo esc_attr(get_option('tp-default-vast-url')); ?>"
                         placeholder="<?php _e('Ad tag url (IMA/VAST/VPAID/VMAP)', HVP_TEXTDOMAIN);?>">
                 </div>
-                <div class="hvp-input-row">
-                <?php if ($cdn_customerid) { ?>
+                <!-- <div class="hvp-input-row">
+               <?php if ($cdn_customerid) { ?>
                     <p>HolaCDN analytics activated for account <?php _e($cdn_customerid); ?>!</p>
                 <?php } else { ?>
                     <a target="_blank" 
@@ -108,8 +108,8 @@ $cdn_customerid = get_option('hvp-cdn-customerid');
                       href="<?php echo admin_url('admin.php?page=hvp_player_setting_page'); ?>">
                         <?php _e('Player requires a HolaCDN account. Sign up for free.'); ?>
                     </a>
-                <?php } ?>
-                </div>
+                <?php } ?> 
+                </div> -->
             </div>
         </div>
         <div id="hvp-insert-container">

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Flat Skin Retina for VideoJS 5</title>
+
+  <!-- Chang URLs to wherever Video.js files will be hosted -->
+  <!-- Default URLs assume the examples folder is included alongside video.js -->
+  <link href="./plugins/videojs-resolution-switcher.css" rel="stylesheet">
+  <link href="./video-js-5.19.2/video-js.min.css" rel="stylesheet" type="text/css">
+  <link href="./videojs-skin-flat/videojs-skin-flat.min.css" rel="stylesheet" type="text/css">
+
+  <!-- Include ES5 shim, sham and html5 shiv for ie8 support  -->
+  <!-- Exclude this if you don't need ie8 support -->
+  <script src="./video-js-5.19.2/ie8/videojs-ie8.min.js"></script>
+
+  <!-- video.js must be in the <head> for older IEs to work. -->
+  <script src="./video-js-5.19.2/video.min.js"></script>
+
+  <!-- Unless using the CDN hosted version, update the URL to the Flash SWF -->
+  <script>
+    videojs.options.flash.swf = "../../video-js.swf";
+  </script>
+</head>
+<body>
+<center>
+  <video id="example_video_1" class="video-js vjs-skin-flat" controls preload="none" width="960" height="400"
+      poster="http://vjs.zencdn.net/v/oceans.png"
+      data-setup="{}">
+    <source src="https://vjs.zencdn.net/v/oceans.mp4?480" type='video/mp4' label='360p' res='360' />
+    <source src="https://vjs.zencdn.net/v/oceans.mp4?1080" type='video/mp4' label='480p' res='480'/>
+    <source src="https://vjs.zencdn.net/v/oceans.mp4?144" type='video/mp4' label='720p' res='720'/>
+    <source src="https://vjs.zencdn.net/v/oceans.mp4?2160" type='video/mp4' label='4K' res='2160'/>
+    <track kind="captions" src="./video-js-5.19.2/examples/shared/example-captions.vtt" srclang="en" label="English"></track><!-- Tracks need an ending tag thanks to IE9 -->
+    <track kind="subtitles" src="./video-js-5.19.2/examples/shared/example-captions.vtt" srclang="en" label="English"></track><!-- Tracks need an ending tag thanks to IE9 -->
+    <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+  </video>
+  <br/>
+  <input type="Button" onclick="switchColor('green');" value="Green" style="background-color: #1abc9c;"> 
+  <input type="Button" onclick="switchColor('teal');" value="Teal" style="background-color: #2ecc71;"> 
+  <input type="Button" onclick="switchColor('blue');" value="Blue" style="background-color: #3498db;"> 
+  <input type="Button" onclick="switchColor('yellow');" value="Yellow" style="background-color: #f1c40f;"> 
+  <input type="Button" onclick="switchColor('orange');" value="Orange" style="background-color: #f39c12;"> 
+  <input type="Button" onclick="switchColor('carrot');" value="Carrot" style="background-color: #e67e22;"> 
+  <input type="Button" onclick="switchColor('red');" value="Red" style="background-color: #e74c3c;"> 
+  <input type="Button" onclick="switchColor('purple');" value="Purple" style="background-color: #9b59b6;">
+  <input type="Button" onclick="switchColor('violet');" value="Violet" style="background-color: #af12b9;">
+</center>
+  <script src="./plugins/videojs-resolution-switcher.js"></script>
+  <script>
+    var currentScheme = 'vjs-skin-flat';
+    var player = videojs('example_video_1');
+    player.videoJsResolutionSwitcher();
+    function switchColor(_color) {
+      var newScheme = 'vjs-skin-flat-'+ _color;
+      player.removeClass(currentScheme);
+      player.addClass(newScheme);
+      currentScheme = newScheme;
+    };
+  </script>
+</body>
+</html>

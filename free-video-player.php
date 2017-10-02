@@ -1,8 +1,8 @@
 <?php
 /*
-Plugin Name: Hola Free Video Player
+Plugin Name: True Pundit Video Player
 Plugin URI: http://holacdn.com/player
-Description: The Hola Free Video Player is VideoJS on steroids, a commercial grade, flexible video player, which provides your users the best viewing experience.
+Description: The True Pundit Video Player is VideoJS on steroids, a commercial grade, flexible video player, which provides your users the best viewing experience.
 Version: 1.3.9
 Author: Hola Networks
 Author URI: http://holacdn.com/player
@@ -11,7 +11,7 @@ Author URI: http://holacdn.com/player
 /**
  * Basic plugin definitions
  *
- * @package Hola Video Player
+ * @package True Pundit Video Player
  * @since 1.0.0
  */
 if(!defined('HVP_DIR')) {
@@ -50,7 +50,7 @@ include_once(HVP_INC_DIR.'/hvp-misc-functions.php');
  *
  * This gets the plugin ready for translation.
  *
- * @package Hola Video Player
+ * @package True Pundit Video Player
  * @since 1.0.0
  */
 load_plugin_textdomain('wphvp', false, dirname(plugin_basename(__FILE__)) . '/languages/');
@@ -60,21 +60,21 @@ load_plugin_textdomain('wphvp', false, dirname(plugin_basename(__FILE__)) . '/la
  *
  * Register plugin activation hook.
  *
- * @package Hola Video Player
+ * @package True Pundit Video Player
  * @since 1.0.0
  */
-register_activation_hook(__FILE__, 'hvp_install');
+/*register_activation_hook(__FILE__, 'hvp_install');
 function hvp_install() {
 	add_option('hvp_firstrun','hvp-plugin-activated');
   add_option('hvp-cdn-customerid', '');
-}
+}*/
 
 /**
  * Deactivation Hook
  *
  * Register plugin deactivation hook.
  *
- * @package Hola Video Player
+ * @package True Pundit Video Player
  * @since 1.0.0
  */
 register_deactivation_hook(__FILE__, 'hvp_uninstall');

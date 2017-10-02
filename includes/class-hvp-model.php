@@ -8,7 +8,7 @@ if (!defined('ABSPATH')) exit;
  *
  * Handles generic functionailties
  *
- * @package Hola Video Player
+ * @package True Pundit Video Player
  * @since 1.0.0
  */
 
@@ -23,7 +23,7 @@ class Hvp_Model {
        *
         * It will strip slashes from the content
       *
-      * @package Hola Video Player
+      * @package True Pundit Video Player
       * @since 1.0.0
       */
     
@@ -40,7 +40,7 @@ class Hvp_Model {
      *
      * It will sanitize text input (strip html tags, and escape characters)
      *
-     * @package Hola Video Player
+     * @package True Pundit Video Player
      * @since 1.0.0
      */
     public function hvp_nohtml_kses($data = array()) {

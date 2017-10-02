@@ -9,14 +9,14 @@ if (!defined('ABSPATH')) exit;
  * All misc functions handles to
  * different functions
  *
- * @package Hola Video Player
+ * @package True Pundit Video Player
  * @since 1.0.0
  */
 
 /**
  * Return mime type from url
  *
- * @package Hola Video Player
+ * @package True Pundit Video Player
  * @since 1.0.0
  */
 function hvp_get_mimetype($file) {
@@ -95,7 +95,7 @@ function hvp_build_video_tag($attr) {
     }
 
     $opts = array();
-    $opts['player'] = "document.getElementById('$res_class')";
+    // $opts['player'] = "document.getElementById('$res_class')";
     $opts['sources'] = "[{ type: '$mime_type', src: '$url'}]";
 
     if (!empty($muted))
@@ -142,11 +142,11 @@ function hvp_build_video_tag($attr) {
     $opt_string = implode(', ', array_map(
         function ($v, $k) { return "$k: $v"; },
         $opts, array_keys($opts)));
-    wp_add_inline_script($last_script, "window.hola_player({ $opt_string });");
+    // wp_add_inline_script($last_script, "window.hola_player({ $opt_string });");
 
     ob_start();
     ?>
-    <div class="hvp-video hvp-content-video">
+    <!-- <div class="hvp-video hvp-content-video">
       <video id="<?php print $res_class?>" data-id="<?php print $res_class?>"
         class="video-js <?php print "$skin $res_class {$attr['class']}"; ?>"
         preload="<?php print $attr['preload']; ?>" width="<?php print $width?>"
@@ -154,6 +154,25 @@ function hvp_build_video_tag($attr) {
         height="<?php print $height?>" poster="<?php print $attr['poster'];?>">
             <p class="vjs-no-js"><?php _e('To view this video please enable JavaScript, and consider upgrading to a web browser that', HVP_TEXTDOMAIN) ?> <a href="http://videojs.com/html5-video-support/" target="_blank"><?php _e('supports HTML5 video', HVP_TEXTDOMAIN) ?></a></p>
       </video>
+    </div> -->
+    <div class="">
+      <video
+            id="<?php print $res_class?>" data-id="<?php print $res_class?>"
+            class="video-js vjs-default-skin"
+            controls
+            preload="<?php print $attr['preload']; ?>" width="<?php print $width?>"
+        <?php print $muted ? "muted" : ""?>
+        height="<?php print $height?>" poster="<?php print $attr['poster'];?>"
+            data-setup='{}'>
+          <source src="//vjs.zencdn.net/v/oceans.mp4" type="video/mp4"></source>
+          <p class="vjs-no-js">
+            To view this video please enable JavaScript, and consider upgrading to a
+            web browser that
+            <a href="http://videojs.com/html5-video-support/" target="_blank">
+              supports HTML5 video
+            </a>
+          </p>
+    </video>
     </div>
     <?php
     $content = ob_get_clean();

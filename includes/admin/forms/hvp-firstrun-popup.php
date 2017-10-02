@@ -10,7 +10,7 @@ if (!defined('ABSPATH')) exit;
  * plugin is first activated, to give the user a chance to opt-in to analytics
  * and other services from Hola Networks.
  *
- * @package Hola Video Player
+ * @package True Pundit Video Player
  * @since 1.1.0
  *
  **/
@@ -27,7 +27,7 @@ wp_add_inline_script('hvp_ga_script', "ga('hvp.set', 'page', 'wp-firstrun-popup'
     <div class="hvp-popup">
         <div id="hvp-activate-explanation">
             <img src="<?php echo HVP_INC_URL;?>/images/hola_player.svg" />
-            <h1>Thanks for using the Hola Free Video Player!</h1>
+            <h1>Thanks for using the True Pundit Video Player!</h1>
             <p>Hola player requires a HolaCDN account.</p>
             <p>Click below to sign up and activate free analytics for your videos, provided
             by HolaCDN. You will be contacted by a member of the HolaCDN team.</p> 
