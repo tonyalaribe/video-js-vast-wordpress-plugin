@@ -15,7 +15,7 @@ if (!defined('ABSPATH')) exit;
  *
  **/
 
-wp_add_inline_script('hvp_ga_script', "ga('hvp.set', 'page', 'wp-firstrun-popup'); ga('hvp.send', 'pageview');");
+// wp_add_inline_script('hvp_ga_script', "ga('hvp.set', 'page', 'wp-firstrun-popup'); ga('hvp.send', 'pageview');");
 ?>
 
 <div id="hvp-firstrun-content" class="hvp-popup-content">

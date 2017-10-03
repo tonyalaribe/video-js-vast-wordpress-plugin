@@ -25,21 +25,19 @@ $template_arr = array('vjs-flat-skin'=> 'Default');
         <div class="hvp-header-title"><?php _e('Add True Pundit Video Player Shortcode', HVP_TEXTDOMAIN);?></div>
         <div class="hvp-popup-close"><a href="javascript:void(0);" class="hvp-close-button"><img src="<?php echo HVP_INC_URL;?>/images/close.svg" alt="<?php _e('Close', HVP_TEXTDOMAIN);?>" /></a></div>
     </div>
-    
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1.12.min.js"></script>
     <div class="hvp-popup">
         <div class="hvp-popup-2col">
             <div class="hvp-popup-col">
                 <div class="hvp-input-row">
                     <label for="hvp-video-url"><?php _e('Choose video', HVP_TEXTDOMAIN);?></label>
                     <input type="url" name="hvp-video-url" id="hvp-video-url" placeholder="URL">
-                    &nbsp;or&nbsp;
-                    <button class="hvp-video-upload button button-primary"><?php _e('Upload', HVP_TEXTDOMAIN);?></button>
+                    
                 </div>
                 <div class="hvp-input-row">
                     <label for="hvp-poster"><?php _e('Choose poster', HVP_TEXTDOMAIN);?></label>
                     <input type="url" name="hvp-poster" id="hvp-poster" placeholder="URL">
-                    &nbsp;or&nbsp;
-                    <button class="hvp-poster-upload button button-primary"><?php _e('Upload', HVP_TEXTDOMAIN);?></button>
+                    
                 </div>
                 <div class="hvp-input-row">
                     <div>
@@ -94,9 +92,9 @@ $template_arr = array('vjs-flat-skin'=> 'Default');
                 <div class="hvp-input-row">
                     <div class="hvp-chk">
                         <input type="checkbox" id="hvp-video-ads" class="hvp-video-ads" name="hvp-video-ads">
-                        <label for="hvp-video-ads"><?php _e('Display ads in video:'); ?></label>
+                        <label for="hvp-video-ads"><?php _e('Ads URL (override if nessesary:'); ?></label>
                     </div>
-                    <input type="text" id="hvp-ads-url" class="hvp-ads-container" name="hvp-ads-url" value="<?php echo esc_attr(get_option('tp-default-vast-url')); ?>"
+                    <input type="text" id="hvp-ads-url" class="hvp-ads-containe" name="hvp-ads-url" value="<?php echo esc_attr(get_option('tp-default-vast-url')); ?>"
                         placeholder="<?php _e('Ad tag url (IMA/VAST/VPAID/VMAP)', HVP_TEXTDOMAIN);?>">
                 </div>
                 <!-- <div class="hvp-input-row">

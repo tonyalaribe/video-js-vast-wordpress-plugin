@@ -56,7 +56,7 @@ if (!defined('ABSPATH')) exit;
             id="tp-default-vast-urlmerid" name="tp-default-vast-url"
             value="<?php echo esc_attr(get_option('tp-default-vast-url')); ?>" />
         </li>
-        <li>
+        <!-- <li>
           <p>Insert your AWS access key id</p>
           <input type="text" class="hvp-input"
             id="tp-aws-access-key-id" name="tp-aws-access-key-id"
@@ -67,7 +67,7 @@ if (!defined('ABSPATH')) exit;
           <input type="text" class="hvp-input"
             id="tp-aws-secret-key" name="tp-aws-secret-key"
             value="<?php echo esc_attr(get_option('tp-aws-secret-key')); ?>" />
-        </li>
+        </li> -->
         <?php submit_button(); ?>
       </form>
     </li>

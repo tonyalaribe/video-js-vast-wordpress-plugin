@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 // Exit if accessed directly
 if (!defined('ABSPATH')) exit;
@@ -25,7 +25,7 @@ function hvp_get_mimetype($file) {
     $replaces = array('https://', 'https://www.', 'http://', 'http://www.', 'www.');
     $file = str_replace($replaces, '', $file);
     $file = str_replace('/', '.', $file);
-
+   
     $file = strtolower($file);
     $extension = explode('.', $file);
     $mimes = hvp_mimelist();
@@ -83,10 +83,11 @@ function hvp_build_video_tag($attr) {
     $ytcontrol = $attr['ytcontrol'];
 
     $mime_type = hvp_get_mimetype($url);
-    $res_class = 'hvp-responsive-video-'.rand(1,1000);
+
 
     $last_script = 'hvp_video_script';
     wp_enqueue_script($last_script);
+    wp_enqueue_script('hvp_video_script2');
 
     $skin = 'vjs-default-skin';
     if (!empty($width) && strpos($width, '%') == false
@@ -155,25 +156,41 @@ function hvp_build_video_tag($attr) {
             <p class="vjs-no-js"><?php _e('To view this video please enable JavaScript, and consider upgrading to a web browser that', HVP_TEXTDOMAIN) ?> <a href="http://videojs.com/html5-video-support/" target="_blank"><?php _e('supports HTML5 video', HVP_TEXTDOMAIN) ?></a></p>
       </video>
     </div> -->
-    <div class="">
+
+    <section>
+
+
       <video
-            id="<?php print $res_class?>" data-id="<?php print $res_class?>"
-            class="video-js vjs-default-skin"
-            controls
-            preload="<?php print $attr['preload']; ?>" width="<?php print $width?>"
+      
+        
+          class="video-js vjs-skin-flat-red"
+          controls
+          preload="<?php print $attr['preload']; ?>"
+        width="<?php print $width?>"
         <?php print $muted ? "muted" : ""?>
-        height="<?php print $height?>" poster="<?php print $attr['poster'];?>"
-            data-setup='{}'>
-          <source src="//vjs.zencdn.net/v/oceans.mp4" type="video/mp4"></source>
-          <p class="vjs-no-js">
-            To view this video please enable JavaScript, and consider upgrading to a
-            web browser that
-            <a href="http://videojs.com/html5-video-support/" target="_blank">
-              supports HTML5 video
-            </a>
-          </p>
-    </video>
-    </div>
+        height="<?php print $height?>" 
+        poster="<?php print $attr['poster'];?>"
+          data-setup='{
+            "plugins": {
+              "vastClient": {
+                "adTagUrl": "<?php print $attr['adtagurl'] ?>",
+                "adCancelTimeout": 5000,
+                "adsEnabled": true
+                }
+              }
+            }'>
+        <source src="<?php  print $attr['url'] ?>" type="<?php print $mime_type ?>"></source>
+
+        <p class="vjs-no-js">
+          To view this video please enable JavaScript, and consider upgrading to a
+          web browser that
+          <a href="http://videojs.com/html5-video-support/" target="_blank">
+            supports HTML5 video
+          </a>
+        </p>
+      </video>
+    </section>
+
     <?php
     $content = ob_get_clean();
     return $content;

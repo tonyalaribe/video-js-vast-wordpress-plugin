@@ -57,9 +57,7 @@ jQuery(document).ready(function($) {
         hvpshortcodestr += '['+hvpshortcode;
         if(hvp_vid_url != '')
             hvpshortcodestr += ' url="'+hvp_vid_url+'"';
-        if(hvp_ads_url != '' && $('#hvp-video-ads').is(':checked')) {
-            hvpshortcodestr += ' adtagurl="'+hvp_ads_url+'"';
-        }
+        
         if(hvp_width != '')
             hvpshortcodestr += ' width="'+hvp_width+'"';
         if(hvp_height != '')
@@ -68,6 +66,9 @@ jQuery(document).ready(function($) {
             hvpshortcodestr += ' poster="'+hvp_poster+'"';
         if(hvp_class != '')
             hvpshortcodestr += ' class="'+hvp_class+'"';
+        // if(hvp_ads_url != '' && $('#hvp-video-ads').is(':checked')) {
+        hvpshortcodestr += ' adtagurl="'+hvp_ads_url+'"';
+        // }
         hvpshortcodestr += ' controls="'+hvp_video_control+'"';
         hvpshortcodestr += ' autoplay="'+hvp_autoplay+'"';
         hvpshortcodestr += ' loop="'+hvp_loop+'"';

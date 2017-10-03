@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: True Pundit Video Player
-Plugin URI: http://holacdn.com/player
+Plugin URI: https://past3dev.com
 Description: The True Pundit Video Player is VideoJS on steroids, a commercial grade, flexible video player, which provides your users the best viewing experience.
-Version: 1.3.9
-Author: Hola Networks
-Author URI: http://holacdn.com/player
+Version: 1.0.0
+Author: Past 3 Studio for True Pundit
+Author URI: https://past3dev.com
 */
 
 /**
