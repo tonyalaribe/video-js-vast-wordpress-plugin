@@ -1,4 +1,4 @@
- <?php
+<?php
 
 // Exit if accessed directly
 if (!defined('ABSPATH')) exit;
@@ -19,6 +19,7 @@ if (!defined('ABSPATH')) exit;
  * @package True Pundit Video Player
  * @since 1.0.0
  */
+
 function hvp_get_mimetype($file) {
     if(empty($file))
         return 'video/mp4';
@@ -75,12 +76,14 @@ function hvp_user_details() {
     );
 }
 
+
 function hvp_build_video_tag($attr) {
     $url = $attr['url'];
     $width = $attr['width'];
     $height = $attr['height'];
     $muted = $attr['muted'];
     $ytcontrol = $attr['ytcontrol'];
+    //$adjscode = $attr['adjscode'];
 
     $mime_type = hvp_get_mimetype($url);
 
@@ -158,29 +161,28 @@ function hvp_build_video_tag($attr) {
     </div> -->
 
     <section>
-
-
-      <video
-      
-        
-          class="video-js vjs-skin-flat-red"
+  
+      <video class="video-js vjs-skin-flat-red vjs-16-9" id="<?php print $attr['video_id'];?>" style="max-width: 100%;"
           controls
           preload="<?php print $attr['preload']; ?>"
         width="<?php print $width?>"
-        <?php print $muted ? "muted" : ""?>
+          <?php if ($muted=="true"){
+        print "muted";
+        }
+        ?>
         height="<?php print $height?>" 
         poster="<?php print $attr['poster'];?>"
           data-setup='{
             "plugins": {
               "vastClient": {
                 "adTagUrl": "<?php print $attr['adtagurl'] ?>",
-                "adCancelTimeout": 5000,
+                "adCancelTimeout": 8000,
                 "adsEnabled": true
                 }
               }
             }'>
-        <source src="<?php  print $attr['url'] ?>" type="<?php print $mime_type ?>"></source>
-
+        <source src="<?php  print $attr['url']; ?>" type="<?php print $mime_type ?>"></source>
+        
         <p class="vjs-no-js">
           To view this video please enable JavaScript, and consider upgrading to a
           web browser that
@@ -189,9 +191,59 @@ function hvp_build_video_tag($attr) {
           </a>
         </p>
       </video>
+    
+    </section>
+    <section style="display: none">
+          <div class="tp_overlay_ad" id="ad" style="margin-top:2%">
+            <?php  print get_option('tp-default-js-ad-code'); ?>
+        </div>
     </section>
 
-    <?php
+    <style type="text/css">
+        .tp_overlay_ad {
+            max-height: 40%;
+            width: auto;
+            margin:0 auto;
+            text-align: center;
+            margin-top:2%;
+        }
+    </style>
+        
+      <script type="text/javascript">
+          var player = videojs('<?php print $attr['video_id'];?>');
+
+          var ModalDialog = videojs.getComponent('ModalDialog');
+
+          var modal = new ModalDialog(player, {
+
+            // We don't want this modal to go away when it closes.
+            temporary: false
+          });
+
+          var elem = modal.contentEl()
+
+          console.log(elem)
+
+          player.addChild(modal);
+
+          player.on('pause', function() {
+            modal.content(document.getElementById("ad"));
+            modal.open();
+          });
+
+          player.on('play', function() {
+            //modal.content(document.getElementById("ad"));
+            modal.close();
+          });
+
+          modal.on('modalclose', function() {
+            player.play();
+          });
+
+      </script>
+
+<?php
     $content = ob_get_clean();
     return $content;
-}
+  }
+?>

@@ -11,9 +11,6 @@ jQuery(document).ready(function($) {
                     image : url+'/../images/hola_player.svg',
                     onclick : function() {
                         $('.hvp-popup-overlay').fadeIn();
-                        // window.ga('hvp.set', 'page', 'wp-shortcode-popup', 'click');
-                        // window.ga('hvp.send', 'pageview');
-                        // window.ga('hvp.send', 'event', 'wp-plugin', 'click', 'open-shortcode-btn');
 
                         var popupcontent = $('.hvp-popup-content');
                         popupcontent.fadeIn();
@@ -29,11 +26,13 @@ jQuery(document).ready(function($) {
         tinymce.PluginManager.add('hvp_video', tinymce.plugins.hvp_video);
     })();
 
-    //close popup window
+    //close popup window hvp-close-button
     $(document).on("click", ".hvp-close-button, .hvp-popup-overlay", function() {
         $('.hvp-popup-overlay').fadeOut();
         $('.hvp-popup-content').fadeOut();
     });
+
+
 
     $(document).on("click", "#hvp-insert-shortcode", function() {
         // window.ga('hvp.send', 'event', 'wp-plugin', 'click', 'insert-shortcode-btn');
@@ -48,6 +47,7 @@ jQuery(document).ready(function($) {
         var hvp_poster = $('#hvp-poster').val();
         var hvp_class = $('#hvp-class').val();
         var hvp_template = $('#hvp-template').val();
+        //var hvp_js_ad_code = $('#hvp-ad-script').val();
         var hvp_video_control = $('#hvp-video-control').is(':checked');
         var hvp_autoplay = $('#hvp-autoplay').is(':checked');
         var hvp_loop = $('#hvp-loop').is(':checked');
@@ -73,6 +73,7 @@ jQuery(document).ready(function($) {
         hvpshortcodestr += ' autoplay="'+hvp_autoplay+'"';
         hvpshortcodestr += ' loop="'+hvp_loop+'"';
         hvpshortcodestr += ' muted="'+hvp_mute+'"';
+        //hvpshortcodestr += ' adjscode="'+hvp_js_ad_code+'"';
         hvpshortcodestr += ' ytcontrol="'+hvp_ytcontrol+'"';
 
         hvpshortcodestr += '][/'+hvpshortcode+']';

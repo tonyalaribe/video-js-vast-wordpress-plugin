@@ -80,8 +80,8 @@ class Hvp_Admin {
         }
         // register_setting('hvp-cdn-settings', 'hvp-cdn-customerid');
         register_setting('hvp-cdn-settings', 'tp-default-vast-url');
-        register_setting('hvp-cdn-settings', 'tp-aws-access-key-id');  
-        register_setting('hvp-cdn-settings', 'tp-aws-secret-key');  
+        register_setting('hvp-cdn-settings', 'tp-default-js-ad-code');  
+        //register_setting('hvp-cdn-settings', 'tp-aws-secret-key');  
 
     }
 

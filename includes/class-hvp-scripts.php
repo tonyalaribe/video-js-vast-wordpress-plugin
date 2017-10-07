@@ -70,9 +70,11 @@ class Hvp_Scripts {
         // // IMA ADS SDK loader
         // wp_register_script('hvp_ima_ads_sdk_script', '//imasdk.googleapis.com/js/sdkloader/ima3.js', array(), HVP_VERSION);
 
-        wp_register_script('hvp_video_script', "//vjs.zencdn.net/5.19/video.min.js", array(), null);
-        wp_register_script('hvp_video_script2', HVP_INC_URL ."/true-pundit/videojs_5.vast.vpaid.min.js", array(), HVP_VERSION);
+        //wp_register_script('hvp_video_script', "//vjs.zencdn.net/5.19/video.min.js", array(), null);
+        //wp_register_script('hvp_video_script2', HVP_INC_URL ."/true-pundit/videojs_5.vast.vpaid.min.js", array(), HVP_VERSION);
    }
+
+
 
     /**
      * Enqueue styles on front Side
@@ -106,6 +108,9 @@ class Hvp_Scripts {
 
         //add public styles
         add_action('wp_enqueue_scripts', array($this, 'hvp_public_styles'));
+
+        wp_enqueue_script('hvp_video_script', HVP_INC_URL ."/true-pundit/videojs.js", false);
+        wp_enqueue_script('hvp_video_script2', HVP_INC_URL ."/true-pundit/videojs_5.vast.vpaid.min.js", false);
     }
 }
 ?>

@@ -27,11 +27,26 @@ class Hvp_Shortcode {
      * @package True Pundit Video Player
      * @since 1.0.0
     */
+    function incrementalHash($len = 5){
+      $charset = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+      $base = strlen($charset);
+      $result = '';
+
+      $now = explode(' ', microtime())[1];
+      while ($now >= $base){
+        $i = $now % $base;
+        $result = $charset[$i] . $result;
+        $now /= $base;
+      }
+      return substr($result, -5);
+    }
+
     public function hvp_simple_video($atts, $content) {
         $atts = shortcode_atts(array(
             'url' => '',
             'adtagurl'=> '',
             'poster' => '',
+            'video_id' => $this->incrementalHash(5),
             'width' => '640',
             'height' => '320',
             'controls' => true,

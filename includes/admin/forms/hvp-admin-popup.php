@@ -25,7 +25,7 @@ $template_arr = array('vjs-flat-skin'=> 'Default');
         <div class="hvp-header-title"><?php _e('Add True Pundit Video Player Shortcode', HVP_TEXTDOMAIN);?></div>
         <div class="hvp-popup-close"><a href="javascript:void(0);" class="hvp-close-button"><img src="<?php echo HVP_INC_URL;?>/images/close.svg" alt="<?php _e('Close', HVP_TEXTDOMAIN);?>" /></a></div>
     </div>
-    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.1.12.min.js"></script>
+
     <div class="hvp-popup">
         <div class="hvp-popup-2col">
             <div class="hvp-popup-col">
@@ -95,8 +95,13 @@ $template_arr = array('vjs-flat-skin'=> 'Default');
                         <label for="hvp-video-ads"><?php _e('Ads URL (override if nessesary:'); ?></label>
                     </div>
                     <input type="text" id="hvp-ads-url" class="hvp-ads-containe" name="hvp-ads-url" value="<?php echo esc_attr(get_option('tp-default-vast-url')); ?>"
-                        placeholder="<?php _e('Ad tag url (IMA/VAST/VPAID/VMAP)', HVP_TEXTDOMAIN);?>">
+                        placeholder="<?php _e('Ad tag url (IMA/VAST/VPAID/VMAP)', HVP_TEXTDOMAIN);?>"><br/><br/>
                 </div>
+                 <!-- <div class="hvp-input-row" style="width: 500px;">
+                    <label for="hvp-ad-script"><?php _e('Enter Ad JS Code', HVP_TEXTDOMAIN);?></label>
+                    <input type="text" name="hvp-ad-script" id="hvp-ad-script" placeholder="Enter Ad JS Code" value="<?php echo esc_attr(get_option('tp-default-js-ad-code')); ?>">
+                    
+                </div> -->
                 <!-- <div class="hvp-input-row">
                <?php if ($cdn_customerid) { ?>
                     <p>HolaCDN analytics activated for account <?php _e($cdn_customerid); ?>!</p>

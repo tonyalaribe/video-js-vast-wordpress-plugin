@@ -56,6 +56,12 @@ if (!defined('ABSPATH')) exit;
             id="tp-default-vast-urlmerid" name="tp-default-vast-url"
             value="<?php echo esc_attr(get_option('tp-default-vast-url')); ?>" />
         </li>
+        <li>
+          <p>JavaScript Ad Code</p>
+          <input type="text" class="hvp-input"
+            id="tp-default-js-ad-code" name="tp-default-js-ad-code"
+            value="<?php echo esc_attr(get_option('tp-default-js-ad-code')); ?>" />
+        </li>
         <!-- <li>
           <p>Insert your AWS access key id</p>
           <input type="text" class="hvp-input"
